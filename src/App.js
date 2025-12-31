@@ -19,16 +19,10 @@ function App() {
 
   // Sample data structure for extracted fields
   const sampleFields = [
-    { id: 'field_1', label: 'Applicant Name', value: 'MD. ABDUL KARIM', type: 'text', confidence: 98, required: true },
-    { id: 'field_2', label: 'Father Name', value: 'MD. ABDUL HALIM', type: 'text', confidence: 92, required: false },
-    { id: 'field_3', label: 'Date of Birth', value: '1985-06-15', type: 'date', confidence: 96, required: true },
-    { id: 'field_4', label: 'National ID No', value: '19958516125000123', type: 'text', confidence: 97, required: true },
-    { id: 'field_5', label: 'Mobile Number', value: '01712345678', type: 'tel', confidence: 95, required: true },
-    { id: 'field_6', label: 'Email ID', value: 'abdul.karim@example.com', type: 'email', confidence: 90, required: false },
-    { id: 'field_7', label: 'Deposit Amount', value: '500000', type: 'number', confidence: 99, required: true },
-    { id: 'field_8', label: 'Account Title', value: 'Mr', type: 'radio', confidence: 82, required: true },
-    { id: 'field_9', label: 'Marital Status', value: 'married', type: 'select', confidence: 80, required: false },
-    { id: 'field_10', label: 'Source of Income', value: ['salary'], type: 'checkbox', confidence: 75, required: false },
+    { id: 'field_1', label: 'Account Name', value: 'MD. ABDUL KARIM', type: 'text', confidence: 98, required: true },
+    { id: 'field_2', label: 'Account Number', value: '1234567890', type: 'number', confidence: 92, required: false },
+    { id: 'field_3', label: 'Branch Code', value: '500000', type: 'number', confidence: 99, required: true },
+    { id: 'field_4', label: 'CIF Number', value: '123', type: 'number', confidence: 99, required: true },
   ];
 
   // Process steps
@@ -75,46 +69,11 @@ function App() {
     // Generate form sections based on field types
     const formSections = [
       {
-        title: 'Personal Information',
-        icon: FaUser,
-        fields: fields.filter(f => 
-          ['text', 'date', 'select', 'radio'].includes(f.type) && 
-          ['name', 'father', 'mother', 'dob', 'marital'].some(key => 
-            f.label.toLowerCase().includes(key)
-          )
-        )
-      },
-      {
-        title: 'Contact Details',
-        icon: FaFileAlt,
-        fields: fields.filter(f => 
-          ['email', 'tel', 'text'].includes(f.type) && 
-          ['email', 'phone', 'mobile', 'address'].some(key => 
-            f.label.toLowerCase().includes(key)
-          )
-        )
-      },
-      {
         title: 'Account Information',
         icon: FaFileAlt,
         fields: fields.filter(f => 
-          ['number', 'select', 'checkbox'].includes(f.type) && 
-          ['account', 'deposit', 'amount', 'income'].some(key => 
-            f.label.toLowerCase().includes(key)
-          )
+          ['number', 'text'].includes(f.type)
         )
-      },
-      {
-        title: 'Signature',
-        icon: FaSignature,
-        fields: [{ 
-          id: 'signature', 
-          label: 'Digital Signature', 
-          value: '', 
-          type: 'signature', 
-          confidence: 100, 
-          required: true 
-        }]
       }
     ];
 
